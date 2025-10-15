@@ -1,5 +1,5 @@
 import moment from "moment";
-// import html2canavas from 'html2canvas';
+// import html2canvas from 'html2canvas';
 import html2canvas from "html2canvas";
 
 export const validateEmail = (email) => {
@@ -96,11 +96,9 @@ export const fixTailwindColors = (element) => {
 // export async function captureElementAsImage(element) {
 //     if (!element) throw new Error("No element provided");
 
-//     const canvas = await html2canavas(element);
+//     const canvas = await html2canvas(element);
 //     return canvas.toDataURL("image/png");
 // };
-
-import html2canvas from "html2canvas";
 
 // 🧹 This cleans unsupported color functions like `lab()`
 function sanitizeColors(element) {
@@ -127,7 +125,7 @@ export async function captureElementAsImage(element) {
   // 🧩 Fix Tailwind LAB() colors before capture
   sanitizeColors(element);
 
-  // ✅ Fixed typo: should be html2canvas, not html2canavas
+  // ✅ Fixed typo: should be html2canvas, not html2canvas
   const canvas = await html2canvas(element, {
     useCORS: true,
     scale: 2,
