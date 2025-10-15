@@ -1,5 +1,6 @@
 import moment from "moment";
-import html2canavas from 'html2canvas';
+// import html2canavas from 'html2canvas';
+import html2canvas from "html2canvas";
 
 export const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -92,12 +93,50 @@ export const fixTailwindColors = (element) => {
 };
 
 // Convert component to image
-export async function captureElementAsImage(element) {
-    if (!element) throw new Error("No element provided");
+// export async function captureElementAsImage(element) {
+//     if (!element) throw new Error("No element provided");
 
-    const canvas = await html2canavas(element);
-    return canvas.toDataURL("image/png");
-};
+//     const canvas = await html2canavas(element);
+//     return canvas.toDataURL("image/png");
+// };
+
+import html2canvas from "html2canvas";
+
+// 🧹 This cleans unsupported color functions like `lab()`
+function sanitizeColors(element) {
+  if (!element) return;
+
+  const allElements = element.querySelectorAll("*");
+  allElements.forEach((el) => {
+    const style = window.getComputedStyle(el);
+
+    // Replace unsupported color functions
+    ["color", "backgroundColor", "borderColor"].forEach((prop) => {
+      const value = style[prop];
+      if (value && value.includes("lab(")) {
+        el.style[prop] =
+          prop === "backgroundColor" ? "rgb(255, 255, 255)" : "rgb(0, 0, 0)";
+      }
+    });
+  });
+}
+
+export async function captureElementAsImage(element) {
+  if (!element) throw new Error("No element provided");
+
+  // 🧩 Fix Tailwind LAB() colors before capture
+  sanitizeColors(element);
+
+  // ✅ Fixed typo: should be html2canvas, not html2canavas
+  const canvas = await html2canvas(element, {
+    useCORS: true,
+    scale: 2,
+    backgroundColor: null,
+  });
+
+  return canvas.toDataURL("image/png");
+}
+
 
 // Utility to convert base64 data URL to a file object
 export const dataURLtoFile = (dataUrl, fileName) => {
