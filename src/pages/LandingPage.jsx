@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Menu, X } from "lucide-react";
 
 import HERO_IMG from "../assets/hero.png"
 import Login from './Auth/Login';
@@ -15,6 +16,7 @@ const LandingPage = () => {
 
     const [openAuthModal, setOpenAuthModal] = useState(false);
     const [currentPage, setCurrentPage] = useState("login");
+    const [isOpen, setIsOpen] = useState(false);
 
     const hanldeCTA = () => {
         if (!user) {
@@ -29,14 +31,61 @@ const LandingPage = () => {
             <div className="container mx-auto px-4 py-6">
                 {/* Header */}
                 <header className='flex justify-between items-center mb-16'>
-                    <div className="text-xl font-bold" style={{ fontFamily: "Tilt Prism, Trade Winds, sans-serif" }}>Resume Builder</div>
+                    <div className="text-xl font-bold" style={{ fontFamily: "Tilt Prism, Trade Winds, sans-serif" }}><Link to="/">Resume Builder</Link></div>
+                    <nav className='space-x-5 hidden md:flex'>
+                        <Link to="/about">About</Link>
+                        <Link to="/contact">Contact</Link>
+                    </nav>
                     {user ? <ProfileInfoCard /> :<button
-                        className='bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer '
+                        className='hidden md:flex bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer '
                         onClick={() => setOpenAuthModal(true)}
                     >
                         Login / Sign Up
                     </button>}
+
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-gray-700 focus:outline-none"
+                    >
+                        {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    </button>
                 </header>
+
+                {/* Mobile */}
+                {isOpen && (
+                    <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
+                        <div className="flex flex-col px-6 py-4 space-y-4 font-medium text-gray-700">
+                        <Link
+                            to="/"
+                            onClick={() => setIsOpen(false)}
+                            className="hover:text-green-500 transition"
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="/about"
+                            onClick={() => setIsOpen(false)}
+                            className="hover:text-green-500 transition"
+                        >
+                            About
+                        </Link>
+                        <Link
+                            to="/contact"
+                            onClick={() => setIsOpen(false)}
+                            className="hover:text-green-500 transition"
+                        >
+                            Contact
+                        </Link>
+
+                        {user ? <ProfileInfoCard /> :<button
+                            className='bg-purple-100 text-sm font-semibold text-black px-7 py-2.5 rounded-lg hover:bg-gray-800 hover:text-white transition-colors cursor-pointer '
+                            onClick={() => setOpenAuthModal(true)}
+                        >
+                            Login / Sign Up
+                        </button>}
+                        </div>
+                    </div>
+                    )}
 
                 {/* Hero Content */}
                 <div className="flex flex-col md:flex-row items-center">

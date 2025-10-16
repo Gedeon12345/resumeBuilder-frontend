@@ -41,7 +41,7 @@ const TemplateOne = ({ resumeData, colorPalette, containerWidth }) => {
     return (
         <div
             ref={resumeRef}
-            className='p-3 bg-white'
+            className={`p-3 bg-white`}
             style={{
                 transform: containerWidth > 0 ? `scale(${scale})` : "none",
                 transformOrigin: "top left",

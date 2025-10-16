@@ -7,6 +7,10 @@ import SignUp from './pages/Auth/SignUp';
 import Dashboard from './pages/Home/Dashboard';
 import EditResume from './pages/ResumeUpdate/EditResume';
 import UserProvider from './context/userContext';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
 
 const App = () => {
   return (
@@ -18,6 +22,10 @@ const App = () => {
             <Route path='/' element={<LandingPage />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/resume/:resumeId' element={<EditResume />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+            <Route path='/terms' element={<Terms />} />
           </Routes>
         </Router>
       </div>

@@ -7,12 +7,17 @@ import axiosInstance from '../../utils/axiosInstance'
 import { API_PATHS } from '../../utils/apiPaths'
 import { UserContext } from '../../context/userContext'
 import uploadImage from '../../utils/uploadImage'
+import Modal from '../../components/Modal'
+import Privacy from '../PrivacyPolicy'
+import Terms from '../Terms'
 const SignUp = ({ setCurrentPage }) => {
     const [profilePic, setProfilePic] = useState(null);
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+    const [openPrivacy, setOpenPrivacy] = useState(false);
+    const [openTerms, setOpenTerms] = useState(false);
 
     const [error, setError] = useState(null);
 
@@ -137,8 +142,51 @@ const SignUp = ({ setCurrentPage }) => {
                         Login
                     </button>
                 </p>
+                <p className="text-[13px] text-slate-600 mt-3 flex space-x-2">
+                    <input type="checkbox" name="privacy" id="" />
+                    By clicking here you agree to our{" "}
+                    <div
+                        className="font-medium text-primary cursor-pointer"
+                        onClick={() => {
+                            setOpenPrivacy(true)
+                        }}
+                    >
+                        Privacy and Policies
+                    </div>
+                    <div
+                        className="flex font-medium text-primary cursor-pointer"
+                        onClick={() => {
+                            setOpenTerms(true)
+                        }}
+                    >
+                        Terms and Conditions
+                    </div>
+                </p>
                 
             </form>
+
+            <Modal
+                isOpen={openPrivacy}
+                onClose={() => {
+                    setOpenPrivacy(false);
+                }}
+                hideHeader
+            >
+                <div>
+                    <Privacy />
+                </div>
+            </Modal>
+            <Modal
+                isOpen={openTerms}
+                onClose={() => {
+                    setOpenTerms(false);
+                }}
+                hideHeader
+            >
+                <div>
+                    <Terms />
+                </div>
+            </Modal>
         </div>
     )
 }
