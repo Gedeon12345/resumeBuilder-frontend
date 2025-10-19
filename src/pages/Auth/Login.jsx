@@ -95,20 +95,7 @@ const Login = ({setCurrentPage}) => {
                     type="password"
                 />
 
-                {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
-
-                <button type='submit' disabled={loading} className='btn-primary disabled:opacity-50 disabled:pointer-events-none'>
-                    {loading ? (
-                        <div className='flex justify-center items-center'>
-                            <div className="w-4 h-4 border-2 border-red-900 mr-2 border-t-transparent rounded-full animate-spin"></div>
-                            <span>LOGIN IN...</span>
-                        </div>
-                    ) : 
-                        "LOGIN"
-                    }
-                </button>
-
-                <p className="text-[13px] text-slate-600 mt-3">
+<p className="text-[13px] text-slate-600 mt-3">
                     Don't have an account?{" "}
                     <button
                         className="font-medium text-primary cursor-pointer"
@@ -139,6 +126,21 @@ const Login = ({setCurrentPage}) => {
                         Terms and Conditions
                     </div>
                 </p>
+
+                {error && <p className='text-red-500 text-xs pb-2.5'>{error}</p>}
+
+                <button type='submit' disabled={loading} className='btn-primary disabled:opacity-50 disabled:pointer-events-none'>
+                    {loading ? (
+                        <div className='flex justify-center items-center'>
+                            <div className="w-4 h-4 border-2 border-red-900 mr-2 border-t-transparent rounded-full animate-spin"></div>
+                            <span>LOGIN IN...</span>
+                        </div>
+                    ) : 
+                        "LOGIN"
+                    }
+                </button>
+
+                
             </form>
 
             <Modal

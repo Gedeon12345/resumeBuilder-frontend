@@ -118,6 +118,27 @@ const SignUp = ({ setCurrentPage }) => {
                     />
                 </div>
 
+                <p className="text-[13px] text-slate-600 mt-3 flex space-x-2">
+                    <input type="checkbox" name="privacy" id="" />
+                    By clicking here you agree to our{" "}
+                    <div
+                        className="font-medium text-primary cursor-pointer"
+                        onClick={() => {
+                            setOpenPrivacy(true)
+                        }}
+                    >
+                        Privacy and Policies
+                    </div>
+                    <div
+                        className="flex font-medium text-primary cursor-pointer"
+                        onClick={() => {
+                            setOpenTerms(true)
+                        }}
+                    >
+                        Terms and Conditions
+                    </div>
+                </p>
+
                 {error && <p className="text-red-500 text-xs pb-2.5"> {error} </p>}
 
                 <button type='submit' disabled={loading} className='btn-primary disabled:opacity-50 disabled:pointer-events-none'>
@@ -142,26 +163,7 @@ const SignUp = ({ setCurrentPage }) => {
                         Login
                     </button>
                 </p>
-                <p className="text-[13px] text-slate-600 mt-3 flex space-x-2">
-                    <input type="checkbox" name="privacy" id="" />
-                    By clicking here you agree to our{" "}
-                    <div
-                        className="font-medium text-primary cursor-pointer"
-                        onClick={() => {
-                            setOpenPrivacy(true)
-                        }}
-                    >
-                        Privacy and Policies
-                    </div>
-                    <div
-                        className="flex font-medium text-primary cursor-pointer"
-                        onClick={() => {
-                            setOpenTerms(true)
-                        }}
-                    >
-                        Terms and Conditions
-                    </div>
-                </p>
+                
                 
             </form>
 
