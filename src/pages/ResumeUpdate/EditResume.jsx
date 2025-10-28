@@ -729,7 +729,7 @@ export default EditResume
 // Ekounou, Yaoundé, Cameroon
 // fobadeffo@gmail.com
 // +237 693427529
-// https://linkedin/in/gedeon
+// c
 // https://github/in/gedeon
 // https://vercel-app/resume-builder.app
 // Genie Building
