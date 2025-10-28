@@ -1,5 +1,5 @@
-export const BASE_URL = "http://localhost:8000";
-// export const BASE_URL = "https://resumebuilder-backend-bn8q.onrender.com";
+// export const BASE_URL = "http://localhost:8000";
+export const BASE_URL = "https://resumebuilder-backend-bn8q.onrender.com";
 
 // Utils/apiPath.js
 export const API_PATHS = {
