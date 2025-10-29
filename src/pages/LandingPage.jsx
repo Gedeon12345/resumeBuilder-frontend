@@ -45,7 +45,7 @@ const LandingPage = () => {
 
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-gray-700 focus:outline-none"
+                        className="md:hidden text-gray-700 focus:outline-none cursor-pointer"
                     >
                         {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
@@ -53,7 +53,7 @@ const LandingPage = () => {
 
                 {/* Mobile */}
                 {isOpen && (
-                    <div className="md:hidden bg-white shadow-lg border-t border-gray-100">
+                    <div className="md:hidden bg-white shadow-lg border-t border-gray-100 fixed top-0 left-0 min-h-[100vh] min-w-[300px] ">
                         <div className="flex flex-col px-6 py-4 space-y-4 font-medium text-gray-700">
                         <Link
                             to="/"
