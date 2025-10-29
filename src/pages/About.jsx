@@ -37,7 +37,7 @@ export default function About() {
 
             <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden text-gray-700 focus:outline-none"
+                        className="md:hidden text-gray-700 focus:outline-none cursor-pointer"
                     >
                         {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
