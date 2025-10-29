@@ -97,14 +97,14 @@ const Login = ({setCurrentPage}) => {
 
 <p className="text-[13px] text-slate-600 mt-3">
                     Don't have an account?{" "}
-                    <button
+                    <a
                         className="font-medium text-primary cursor-pointer"
                         onClick={() => {
                             setCurrentPage("signup")
                         }}
                     >
                         SignUp
-                    </button>
+                    </a>
                 </p>
                 <p className="text-[13px] text-slate-600 mt-3 space-x-2 flex justify-start items-center">
                     <input type="checkbox" name="privacy" id="" />
