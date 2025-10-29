@@ -147,6 +147,14 @@ export default function Contact() {
         </form>
       </div>
 
+      {/* Footer */}
+      <div className="text-sm bg-gray-50 text-secondary text-center p-5 mt-5 space-y-3">
+          <p className={`text-sm text-gray-600`}>
+              © {new Date().getFullYear()} Time to progress
+          </p>
+          Made with ❤️... For you
+      </div>
+
       <Modal 
           isOpen={openAuthModal}
           onClose={() => {
